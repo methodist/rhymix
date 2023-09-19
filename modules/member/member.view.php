@@ -809,40 +809,6 @@ class MemberView extends Member
 	}
 
 	/**
-	 * @brief Member withdrawl
-	 */
-	function dispMemberLeave()
-	{
-		// A message appears if the user is not logged-in
-		if(!$this->user->member_srl) throw new Rhymix\Framework\Exceptions\MustLogin;
-
-		if (!$this->checkMidAndRedirect())
-		{
-			return;
-		}
-
-		$memberConfig = $this->member_config;
-		$logged_info = Context::get('logged_info');
-		$member_srl = $logged_info->member_srl;
-
-		$member_info = MemberModel::getMemberInfoByMemberSrl($member_srl);
-		Context::set('member_info',$member_info);
-
-		if($memberConfig->identifier == 'user_id')
-		{
-			Context::set('identifier', 'user_id');
-			Context::set('formValue', $member_info->user_id);
-		}
-		else
-		{
-			Context::set('identifier', 'email_address');
-			Context::set('formValue', $member_info->email_address);
-		}
-		// Set a template file
-		$this->setTemplateFile('leave_form');
-	}
-
-	/**
 	 * @brief Member log-out
 	 */
 	function dispMemberLogout()
