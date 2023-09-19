@@ -17,3 +17,18 @@ RewriteRule ^(.+)\.min\.(css|js)$ ./$1.$2 [L]
 RewriteCond %{SCRIPT_FILENAME} !-f
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteRule . index.php [L]
+
+# user added form here
+deny from 62.77.158.209
+
+# php -- BEGIN cPanel-generated handler, do not edit
+<IfModule fcgid_module>
+    <IfModule mime_module>
+        AddHandler fcgid-script .php .php7 .phtml
+        FcgidWrapper /usr/local/cpanel/cgi-sys/ea-php74 .php
+        FcgidWrapper /usr/local/cpanel/cgi-sys/ea-php74 .php7
+        FcgidWrapper /usr/local/cpanel/cgi-sys/ea-php74 .phtml
+    </IfModule>
+</IfModule>
+
+# php -- END cPanel-generated handler, do not edit
